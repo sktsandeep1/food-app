@@ -1,0 +1,48 @@
+.main-layout-body {
+  min-height: 100vh;
+}
+
+.nav-bar {
+  display: grid;
+  grid-template-areas: "1 1";
+  justify-content: space-between;
+}
+
+.header-cart {
+  margin: 0 35px;
+}
+
+.category-list {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+.category {
+  border: 1px solid;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.category-active {
+  border: 2px solid green;
+  background-color: rgb(247, 207, 158);
+}
+
+/* ---------- Login ---------- */
+
+#normal_login,
+#register {
+  max-width: 400px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  background-color: rgba(36, 36, 36, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 50px;
+}

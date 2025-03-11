@@ -1,0 +1,7 @@
+# dependencies
+node_modules
+.env
+
+# setup in package.json
+#"build":"npm install && npm install --prefix client && npm run build --prefix client"
+#"build": "npm install --legacy-peer-deps && npm install --prefix client --legacy-peer-deps && npm run build --prefix client"
