@@ -1,13 +1,5 @@
 {
-  "projects": [
-    {
-      "src": "client/",
-      "buildCommand": "npm run build",
-      "outputDirectory": "client/dist"
-    },
-    {
-      "src": "server/",
-      "buildCommand": "npm run start"
-    }
-  ]
+  "build": {
+    "command": "npm run build"
+  }
 }
