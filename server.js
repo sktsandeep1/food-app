@@ -26,7 +26,13 @@ const app = express();
 
 // middleware
 // app.use (cors())
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,6 +42,7 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("<h1>hi there</h1>");
 });
+// only this one is showing
 
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));

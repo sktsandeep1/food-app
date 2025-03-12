@@ -14,11 +14,12 @@ const importData = async () => {
   try {
     await itemModel.deleteMany();
     const itemsdata = await itemModel.insertMany(dataItems);
-    console.log("all items added".bgGreen);
+    // console.log("all items added".bgGreen, itemsdata);
     process.exit();
   } catch (error) {
     console.log(`${error}`.bgRed.inverse);
     process.exit(1);
   }
 };
+
 importData();

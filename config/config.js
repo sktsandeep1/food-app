@@ -4,10 +4,17 @@ require("colors");
 //connect DB Funtion
 const connectDb = async () => {
   try {
-    const connectt = await mongoose.connect(process.env.MONGO_URI);
+    const connectt = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      // useCreateIndex: true,
+      useUnifiedTopology: true,
+      // useFindAndModify: false,
+    });
+    // useNewUrlParser: true;
+    // useCreateIndex: true;
+    // useUnifiedTopology: true;
+    // useFindAndModify: false;
     console.log(`mongodb connected ${connectt.connection.host}`.bgYellow);
-    useNewUrlParser: true;
-    useUnifiedTopology: true;
   } catch (error) {
     console.log(`Error :${error.message}`.bgRed);
     process.exit(1);
