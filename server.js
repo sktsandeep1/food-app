@@ -27,21 +27,30 @@ const app = express();
 // middleware
 // app.use (cors())
 // app.use(cors({ origin: "*" }));
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: true,
+//     credentials: true,
+//   })
+// );
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 // routes
-app.get("/", (req, res) => {
-  res.send("<h1>hi there</h1>");
-});
+// app.get("/", (req, res) => {
+//   res.send("<h1>hi there</h1>");
+// });
+
+app.use(
+  cors({
+    origin: ["https://food-app-chi-livid.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 // only this one is showing
 
 app.use("/api/items", require("./routes/itemRoutes"));
