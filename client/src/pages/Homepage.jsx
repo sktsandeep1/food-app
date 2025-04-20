@@ -3,15 +3,17 @@ import DefaultLayout from "../components/DefaultLayout";
 import axios from "axios";
 import { Row, Col, Flex } from "antd";
 import ItemList from "../components/ItemList";
+import { useDispatch } from "react-redux";
 
 const Homepage = () => {
   const [itemsData, setItemsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("veggies");
 
+  const dispatch = useDispatch();
+
   const categories = [
     { name: "veggies" },
     { name: "fruits" },
-    { name: "veg momo" },
     { name: "non-veg" },
     { name: "dairy" },
     { name: "beverages" },
@@ -22,9 +24,13 @@ const Homepage = () => {
   useEffect(() => {
     const getAllItems = async () => {
       try {
+        dispatch({
+          type:'SHOW_LOADING'
+        })
         const { data } = await axios.get("/api/items/get-item");
-        console.log("Maal yahan h:", data);
+        // console.log("Maal yahan h:", data);
         setItemsData(data);
+        dispatch({type:'HIDE_LOADING'})
       } catch (error) {
         console.error("Kuch to gadbad h:", error);
       }

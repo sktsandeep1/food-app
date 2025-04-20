@@ -46,6 +46,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/bills", require("./routes/billRoutes"));
 
 // Port
 const PORT = process.env.PORT || 9090;

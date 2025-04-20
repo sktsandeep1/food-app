@@ -1,15 +1,20 @@
-import React from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import {
   DeleteOutlined,
   MinusCircleOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
-import { Table } from "antd";
+import { Table, Button, Modal, Form, Input, Select, message } from "antd";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
+  const [subTotal, setSubTotal] = useState(0);
+  const [billPopUp, setBillPopUp] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.rootReducer);
 
@@ -52,7 +57,19 @@ const CartPage = () => {
         <img src={image} alt={record.name} height="60" width="60" />
       ),
     },
-    { title: "Price", dataIndex: "price" },
+    {
+      title: "Price",
+      dataIndex: "price",
+      render: (text, record) => {
+        const amount = (record.unitPrice * record.quantity).toFixed(2); // Calculate total amount
+        return new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          minimumFractionDigits: 2,
+        }).format(amount); // Format the amount as currency
+      },
+    },
+
     {
       title: "Quantity",
       dataIndex: "_id",
@@ -79,9 +96,97 @@ const CartPage = () => {
     },
   ];
 
+  useEffect(() => {
+    let temp = 0;
+    cartItems.forEach((item) => (temp = temp + item.price * item.quantity));
+    setSubTotal(temp);
+  }, [cartItems]);
+
+  const handleSubmit = async (value) => {
+    try {
+      const billObject = {
+        ...value,
+        cartItems,
+        subTotal,
+        // userId: JSON.parse(localStorage.getItem('auth'))._id
+        //need to setup login wala part then we use the auth things.
+      };
+
+      // console.log(billObject)
+      await axios.post("/api/bills/add-bills", billObject);
+      message.success("bills generated............");
+      console.log(billObject);
+      navigate("/bills");
+    } catch (error) {
+      console.log(error, "error cart page mein h bill generate wale mein");
+    }
+  };
+
   return (
     <DefaultLayout>
       <Table columns={columns} dataSource={cartItems} />
+      <div className="sub-total">
+        <h3>
+          Sub Total:{" "}
+          <b>
+            {new Intl.NumberFormat("en-IN", {
+              style: "currency",
+              currency: "INR",
+              minimumFractionDigits: 2,
+            }).format(subTotal)}
+          </b>
+        </h3>
+        <Button
+          type="primary"
+          onClick={() => {
+            setBillPopUp(true);
+          }}
+        >
+          Create Invoice
+        </Button>
+      </div>
+      {/* <Modal onCancel={setBillPopUp(false) open={billPopUp}} footer={false} > */}
+      <Modal
+        title="Create Invoice Bill"
+        open={billPopUp}
+        onCancel={() => {
+          setBillPopUp(false);
+        }}
+        footer={false}
+      >
+        <Form layout="vertical" onFinish={handleSubmit}>
+          <Form.Item name="customerName" label="Customer Name">
+            <Input />
+          </Form.Item>
+          <Form.Item name="contactNumber" label="Contact Number">
+            <Input />
+          </Form.Item>
+          <Form.Item name="paymentMethod" label="Payment Method">
+            <Select>
+              <Select.Option value="cash">Cash</Select.Option>
+              <Select.Option value="cards">Cards</Select.Option>
+              <Select.Option value="upi">UPI</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <h3>
+            {/* Sub Total: <b>${subTotal}</b> */}
+            Sub Total:{" "}
+            <b>
+              {new Intl.NumberFormat("en-IN", {
+                style: "currency",
+                currency: "INR",
+                minimumFractionDigits: 2,
+              }).format(subTotal)}
+            </b>
+          </h3>
+          <div className="" style={{ display: "flex", justifyContent: "end" }}>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
+          </div>
+        </Form>
+      </Modal>
     </DefaultLayout>
   );
 };

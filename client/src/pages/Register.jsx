@@ -16,10 +16,12 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const { Option } = Select;
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch()
   const [form] = Form.useForm();
   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
   const navigate = useNavigate();
@@ -34,15 +36,15 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      // dispatch({
-      //   type: SHOW_LOADING,
-      // });
+     dispatch({
+        type: "SHOW_LOADING",
+      });
 
       await axios.post("/api/users/register", values);
       message.success("Register Successfully");
       navigate("/login");
     } catch (error) {
-      console.log("kuch to gadbad h !!!!!!!");
+      console.log("kuch to gadbad h register mein !!!!!!!");
     }
   };
 

@@ -20,7 +20,7 @@ const NormalLoginForm = () => {
       message.success("user login successfully");
       navigate("/");
     } catch (error) {
-      console.log("kuch to gadbad h !!!!!!!");
+      console.log("kuch to gadbad h login mein !!!!!!!");
     }
   };
 

@@ -21,7 +21,8 @@ console.log("Item added to cart:", { ...item, quantity: 1 });
 //---- 02:39:11 ----//
 
 /**
- * 1. Task is make a state for add to cart, check the item is same then increament the quantity of the item otherwise add the item.
+ * 1. Task is make a state for add to cart, check the item is same then increament the quantity of the item otherwise add the item.: done 
+ * 2. task is to make a state for price if we are adding same product to cart then the price will increase.
  */
 
 
