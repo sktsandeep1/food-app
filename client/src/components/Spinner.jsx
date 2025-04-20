@@ -1,5 +1,5 @@
 import { CircleLoader } from "react-spinners"
-const spinner = () => {
+const Spinner = () => {
   return (
       <div className="spinner">
           <CircleLoader
@@ -11,4 +11,4 @@ const spinner = () => {
   )
 }
 
-export default spinner
+export default Spinner
