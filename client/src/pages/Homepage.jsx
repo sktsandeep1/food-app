@@ -7,18 +7,19 @@ import { useDispatch } from "react-redux";
 
 const Homepage = () => {
   const [itemsData, setItemsData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("veggies");
+  const [selectedCategory, setSelectedCategory] = useState("groceries");
 
   const dispatch = useDispatch();
 
   const categories = [
-    { name: "veggies" },
+    { name: "groceries" },
     { name: "fruits" },
-    { name: "non-veg" },
+    { name: "vegetables" },
+    { name: "Snacks & Munchies" },
     { name: "dairy" },
     { name: "beverages" },
-    { name: "miscellaneous" },
-    { name: "cloths" },
+    { name: "Health & Wellness" },
+    { name: "Electronics & Home Appliances" },
   ];
 
   useEffect(() => {
@@ -54,7 +55,8 @@ const Homepage = () => {
           </div>
         ))}
       </div>
-      <Row>
+
+      <Row className="home-content-area">
         {itemsData
           .filter((i) => i.category === selectedCategory)
           .map((item, index) => (

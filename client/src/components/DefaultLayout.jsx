@@ -12,6 +12,7 @@ import {
   UnorderedListOutlined,
   HomeOutlined,
   ShoppingCartOutlined,
+  ShopOutlined
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 
@@ -33,6 +34,14 @@ const DefaultLayout = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  const handleCart = () => {
+    if (cartItems.length !== 0) {
+      Navigate("/cart")
+    } else {
+      console.log("cart is empty")
+    }
+  }
+
   return (
     <Layout className="main-layout-body">
       {loading && <Spinner />}
@@ -42,10 +51,13 @@ const DefaultLayout = ({ children }) => {
         collapsible
         collapsed={collapsed}
       >
-        <div className="demo-logo-vertical" />
-        <h1>Food POS</h1>
+        <div className="demo-logo-vertical">
+        <ShopOutlined className="logo"/>
+        </div>
+        
 
         <Menu
+          className="left-sidebar-menu"
           theme="dark"
           mode="inline"
           defaultSelectedKeys={window.location.pathname}
@@ -74,6 +86,7 @@ const DefaultLayout = ({ children }) => {
           </Menu.Item>
         </Menu>
       </Sider>
+
       <Layout>
         <Header
           className="nav-bar"
@@ -94,11 +107,12 @@ const DefaultLayout = ({ children }) => {
             }}
           />
 
-          <div className="header-cart" onClick={() => Navigate("/cart")}>
+          <div className="header-cart" onClick={() => handleCart()}>
             <ShoppingCartOutlined />
             <span>{cartItems.length}</span>
           </div>
         </Header>
+
         <Content
           className="main-products-content-area"
           style={{
@@ -111,6 +125,7 @@ const DefaultLayout = ({ children }) => {
         >
           {children}
         </Content>
+        
       </Layout>
     </Layout>
   );

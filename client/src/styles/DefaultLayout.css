@@ -2,6 +2,23 @@
   min-height: 100vh;
 }
 
+.left-sidebar,
+.left-sidebar-menu {
+  background-color: #ffffff;
+}
+
+.left-sidebar-menu li {
+  color: #000 !important;
+}
+
+li.ant-menu-item.ant-menu-item-selected {
+  color: #fff !important;
+}
+
+li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
+  color: #fff !important;
+}
+
 .nav-bar {
   display: grid;
   grid-template-areas: "1 1";
@@ -16,17 +33,25 @@
   display: flex;
   gap: 20px;
   padding: 10px;
+  text-transform: capitalize;
 }
 
 .category {
-  border: 1px solid;
-  padding: 5px 10px;
+  border: 1px solid #1677ff !important;
+  padding: 10px 13px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .category-active {
-  border: 2px solid green;
-  background-color: rgb(247, 207, 158);
+  border: 1px solid #1677ff;
+  background-color: #1677ff;
+  color: #fff;
+}
+
+.demo-logo-vertical {
+  text-align: center !important;
+  font-size: 60px;
 }
 
 /* ---------- Login ---------- */
@@ -52,3 +77,50 @@
 /**
 https://dev.to/webdeasy/top-20-css-buttons-animations-f41
 */
+
+.ant-card {
+  position: relative;
+}
+
+.ant-card .ant-card-cover {
+  position: relative;
+}
+
+.ant-card .ant-card-cover img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50%;
+}
+
+.ant-card .ant-card-body {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+}
+
+.ant-col {
+  /* height: 200px !important; */
+}
+
+.ant-card {
+  width: 200px !important;
+  height: 200px;
+}
+
+.ant-row.home-content-area .ant-col img {
+  /* border: 4px solid black !important; */
+  /* background-color: #1b0048; */
+  padding: 5px !important;
+}
+
+.home-content-area {
+  margin-top: 100px;
+  display: grid;
+  grid-template-areas: "1 2 3 4 5";
+  row-gap: 60px;
+}

@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import BillsPage from "./pages/BillsPage";
 import CustomerPage from "./pages/CustomerPage";
+import LogoutPage from "./pages/LogoutPage"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/customer-page" element={<CustomerPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
         </Routes>
       </BrowserRouter>
     </>
