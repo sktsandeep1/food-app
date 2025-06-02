@@ -34,6 +34,8 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
   gap: 20px;
   padding: 10px;
   text-transform: capitalize;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .category {
