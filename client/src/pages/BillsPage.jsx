@@ -1,5 +1,5 @@
 // import "../styles/invoice.css";
-import { Table, Modal, Button } from "antd";
+import { Table, Modal, Button, message } from "antd";
 import DefaultLayout from "../components/DefaultLayout";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -28,7 +28,7 @@ const BillsPage = () => {
       setBillsData(data);
       dispatch({ type: "HIDE_LOADING" });
     } catch (error) {
-      console.error("Kuch to gadbad h bill page mein:", error);
+      message.error("Kuch to gadbad h bill page mein:", error);
     }
   };
 
@@ -169,8 +169,8 @@ const BillsPage = () => {
                     <tbody>
                       {selectedBill.cartItems.map((item) => {
                         return (
-                          <>
-                            <tr>
+                          
+                            <tr key={item.id}>
                               <td>
                                 <span>{item.name}</span>
                               </td>
@@ -188,7 +188,7 @@ const BillsPage = () => {
                                 <span>{item.quantity * item.price}</span>
                               </td>
                             </tr>
-                          </>
+                          
                         );
                       })}
                     </tbody>

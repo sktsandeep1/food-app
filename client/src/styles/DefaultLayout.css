@@ -74,53 +74,47 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
 
 /* ---------- css button ---------- */
 
-/**
-https://dev.to/webdeasy/top-20-css-buttons-animations-f41
-*/
-
-.ant-card {
-  position: relative;
-}
-
-.ant-card .ant-card-cover {
-  position: relative;
-}
-
-.ant-card .ant-card-cover img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: translate(50%, -50%);
-  width: 100px !important;
-  height: 100px !important;
-  border-radius: 50%;
-}
-
-.ant-card .ant-card-body {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0%, -50%);
-}
-
-.ant-col {
-  /* height: 200px !important; */
-}
-
-.ant-card {
-  width: 200px !important;
-  height: 200px;
-}
-
-.ant-row.home-content-area .ant-col img {
-  /* border: 4px solid black !important; */
-  /* background-color: #1b0048; */
-  padding: 5px !important;
-}
-
 .home-content-area {
   margin-top: 100px;
-  display: grid;
-  grid-template-areas: "1 2 3 4 5";
-  row-gap: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.home-content-area .ant-col {
+  width: 150px;
+}
+
+.home-content-area .ant-col .ant-card-cover img {
+  object-fit: contain;
+}
+
+.home-content-area .ant-card-body {
+  height: 100px;
+}
+
+.card-items .ant-card {
+  border-radius: 20px;
+}
+
+.card-items .ant-card-body {
+  padding: 20px 10px;
+}
+
+.add-to-cart {
+  padding: 10px;
+  border-radius: 20px 0px 20px 0px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #1677ff !important;
+  cursor: pointer;
+  background-color: #1677ff;
+  color: #ffffff;
+}
+
+.item-price-home {
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 35px;
 }

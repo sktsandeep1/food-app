@@ -14,7 +14,7 @@ import {
   ShoppingCartOutlined,
   ShopOutlined
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, message, theme } from "antd";
 
 const { Header, Sider, Content } = Layout;
 
@@ -38,7 +38,7 @@ const DefaultLayout = ({ children }) => {
     if (cartItems.length !== 0) {
       Navigate("/cart")
     } else {
-      console.log("cart is empty")
+      message.error("cart is empty")
     }
   }
 
@@ -57,34 +57,39 @@ const DefaultLayout = ({ children }) => {
         
 
         <Menu
-          className="left-sidebar-menu"
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={window.location.pathname}
-          // items={[
-          //   { label: "Home", icon: <HomeOutlined />,key: "/" },
-          //   { label: "Bills",icon: <FileTextOutlined />, key: "/bills" },
-          //   { label: "Items", icon: <UnorderedListOutlined />,key: "/items" },
-          //   { label: "Customers", icon: <UserOutlined />,key: "/customers" },
-          //   { label: "Logout", icon: <LogoutOutlined />,key: "/logout" },
-          // ]}
-        >
-          <Menu.Item key="/" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="/bills" icon={<FileTextOutlined />}>
-            <Link to="/bills">Bills</Link>
-          </Menu.Item>
-          <Menu.Item key="/items" icon={<UnorderedListOutlined />}>
-            <Link to="/items">Items</Link>
-          </Menu.Item>
-          <Menu.Item key="/customers" icon={<UserOutlined />}>
-            <Link to="/customer-page">Customers</Link>
-          </Menu.Item>
-          <Menu.Item key="/logout" icon={<LogoutOutlined />}>
-            <Link to="/logout">Logout</Link>
-          </Menu.Item>
-        </Menu>
+  className="left-sidebar-menu"
+  theme="dark"
+  mode="inline"
+  defaultSelectedKeys={[window.location.pathname]}
+  items={[
+    {
+      key: "/",
+      icon: <HomeOutlined />,
+      label: <Link to="/">Home</Link>,
+    },
+    {
+      key: "/bills",
+      icon: <FileTextOutlined />,
+      label: <Link to="/bills">Bills</Link>,
+    },
+    {
+      key: "/items",
+      icon: <UnorderedListOutlined />,
+      label: <Link to="/items">Items</Link>,
+    },
+    {
+      key: "/customers",
+      icon: <UserOutlined />,
+      label: <Link to="/customer-page">Customers</Link>,
+    },
+    {
+      key: "/logout",
+      icon: <LogoutOutlined />,
+      label: <Link to="/logout">Logout</Link>,
+    },
+  ]}
+/>
+
       </Sider>
 
       <Layout>

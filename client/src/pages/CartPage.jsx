@@ -114,11 +114,12 @@ const CartPage = () => {
 
       // console.log(billObject)
       await axios.post("/api/bills/add-bills", billObject);
-      message.success("bills generated............");
+      message.success("Bills has been generated....");
       console.log(billObject);
       navigate("/bills");
     } catch (error) {
       console.log(error, "error cart page mein h bill generate wale mein");
+      // message.error("error cart page mein h bill generate wale mein")
     }
   };
 
@@ -139,8 +140,13 @@ const CartPage = () => {
         <Button
           type="primary"
           onClick={() => {
-            setBillPopUp(true);
+
+            if (cartItems.length == 0) {
+              message.error("cart is empty")
+              return;
+            } setBillPopUp(true);
           }}
+          disabled={cartItems.length === 0}
         >
           Create Invoice
         </Button>
@@ -155,13 +161,16 @@ const CartPage = () => {
         footer={false}
       >
         <Form layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="customerName" label="Customer Name">
+          <Form.Item name="customerName" label="Customer Name" rules={[{ required: true, message: "This field is required" }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="contactNumber" label="Contact Number">
+          <Form.Item name="contactNumber" label="Contact Number" rules={[{ required: true, message: "This field is required" }]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item name="paymentMethod" label="Payment Method">
+          <Form.Item name="paymentMethod" label="Payment Method" rules={[{ required: true, message: "This field is required" }]}
+          >
             <Select>
               <Select.Option value="cash">Cash</Select.Option>
               <Select.Option value="cards">Cards</Select.Option>

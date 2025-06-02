@@ -60,7 +60,7 @@ const Homepage = () => {
         {itemsData
           .filter((i) => i.category === selectedCategory)
           .map((item, index) => (
-            <Col key={index} xs={24} lg={6} md={12} sm={6}>
+            <Col key={index} >
               <ItemList item={item} />
             </Col>
           ))}

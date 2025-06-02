@@ -15,7 +15,7 @@ dispatch({
     payload: {...item, quantity},
     
 })
-console.log("Item added to cart:", { ...item, quantity: 1 });
+// console.log("Item added to cart:", { ...item, quantity: 1 });
 
 //--------------------------------------------------------------------------------------------------------------------------------//
 //---- 02:39:11 ----//
@@ -30,10 +30,10 @@ console.log("Item added to cart:", { ...item, quantity: 1 });
 
     const {Meta} = Card;
   return (
-    <div>
+    <div className="card-items">
         <Card 
         hoverable
-        style={{width:250, margin:10}}
+        // style={{width:250, margin:10}}
         cover={
         <img 
         alt= {item.name} 
@@ -41,8 +41,12 @@ console.log("Item added to cart:", { ...item, quantity: 1 });
         style={{height: 100}}
         />}
         >
-            <Meta title= {item.name}/>
-            <button onClick={()=> handleAddToCart()}>Add to Cart</button>
+        <Meta title={item.name} />
+        
+        <p className="item-price-home">₹{ item.price }</p>
+        
+        
+        <button onClick={()=> handleAddToCart()} className="add-to-cart">Add to Cart</button>
         </Card>
     </div>
   )
