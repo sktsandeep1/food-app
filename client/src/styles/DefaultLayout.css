@@ -60,18 +60,101 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
 
 #normal_login,
 #register {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  background-color: rgba(36, 36, 36, 0.75);
+  padding: 60px;
+  margin: 50px;
+  backdrop-filter: blur(19px) saturate(104%);
+  -webkit-backdrop-filter: blur(19px) saturate(104%);
+  background-color: rgba(17, 25, 40, 0.41);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  padding: 50px;
+}
+
+.login-page,
+.register-page {
+  background-color: green;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4); /* optional dark overlay */
+}
+
+form#normal_login .ant-form-item:last-child .login-form-button {
+  padding: 20px 60px;
+  font-size: 20px;
+}
+
+.login-checkbox .ant-row label,
+.login-txt
+  .ant-row
+  .ant-form-item-control-input
+  .ant-form-item-control-input-content,
+.login-txt
+  .ant-row
+  .ant-form-item-control-input
+  .ant-form-item-control-input-content
+  a {
+  color: #fff;
+  font-size: 15px;
+}
+
+#normal_login input {
+  padding: 10px;
+}
+
+.login-txt
+  .ant-row
+  .ant-form-item-control-input
+  .ant-form-item-control-input-content
+  a:hover {
+  color: #1677ff;
+}
+
+.login-txt .ant-form-item-control-input-content {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.login-checkbox label {
+  display: flex;
+  gap: 10px;
+}
+
+.login-txt .ant-form-item-control-input-content span {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  #normal_login {
+    margin: 50px;
+  }
+
+  #normal_login .ant-form-item:last-child .login-form-button {
+    width: 100%;
+  }
+
+  .login-txt .ant-form-item-control-input-content {
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* ---------- css button ---------- */

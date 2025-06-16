@@ -58,7 +58,10 @@ const RegistrationForm = () => {
   );
 
   return (
-    <Form
+    <div className="register-page">
+      <div className="background-overlay" />
+ 
+      <Form
       form={form}
       name="register"
       onFinish={onFinish}
@@ -127,6 +130,10 @@ const RegistrationForm = () => {
         <Link to="/login">Login Now</Link>
       </Form.Item>
     </Form>
+      </div>
+  
+
+
   );
 };
 

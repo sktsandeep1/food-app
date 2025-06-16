@@ -25,7 +25,9 @@ const NormalLoginForm = () => {
   };
 
   return (
-    <Form
+    <div className="login-page">
+      <div className="background-overlay" />
+<Form
       form={form}
       name="normal_login"
       className="login-form"
@@ -53,11 +55,11 @@ const NormalLoginForm = () => {
         />
       </Form.Item>
 
-      <Form.Item name="remember" valuePropName="checked">
+      <Form.Item name="remember" valuePropName="checked" className="login-checkbox">
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
-      <Form.Item>
+      <Form.Item className="login-txt">
         <Button
           type="primary"
           htmlType="submit"
@@ -66,9 +68,14 @@ const NormalLoginForm = () => {
         >
           Log in
         </Button>
-        Or <Link to="/register">Register Now</Link>
+          <span>
+          Or <Link to="/register">Register Now</Link>
+        </span>
       </Form.Item>
     </Form>
+    </div>
+    
+    
   );
 };
 
