@@ -73,7 +73,7 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
 
 .login-page,
 .register-page {
-  background-color: green;
+  background-color: #1677ff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -81,6 +81,8 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: right;
+  position: relative;
 }
 .background-overlay {
   position: absolute;
