@@ -48,6 +48,13 @@ const CartPage = () => {
     });
   };
 
+  const clear_cart = () => {
+    dispatch({
+      type: "CLEAR_CART",
+    
+  })
+}
+
   const columns = [
     { title: "Name", dataIndex: "name" },
     {
@@ -117,8 +124,11 @@ const CartPage = () => {
       message.success("Bills has been generated....");
       console.log(billObject);
       navigate("/bills");
+      clear_cart()
+
+      // cart should be reset
     } catch (error) {
-      console.log(error, "error cart page mein h bill generate wale mein");
+      console.log(error, "Error cart page mein h bill generate wale mein");
       // message.error("error cart page mein h bill generate wale mein")
     }
   };
@@ -142,7 +152,7 @@ const CartPage = () => {
           onClick={() => {
 
             if (cartItems.length == 0) {
-              message.error("cart is empty")
+              message.error("Cart is empty")
               return;
             } setBillPopUp(true);
           }}
@@ -190,7 +200,7 @@ const CartPage = () => {
             </b>
           </h3>
           <div className="" style={{ display: "flex", justifyContent: "end" }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" >
               Save
             </Button>
           </div>

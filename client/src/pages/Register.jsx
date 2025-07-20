@@ -20,6 +20,13 @@ import { useDispatch } from "react-redux";
 
 const { Option } = Select;
 
+/**
+ * 
+ * https://www.apicountries.com/countries
+ * for different different area code
+ * 
+ */
+
 const RegistrationForm = () => {
   const dispatch = useDispatch()
   const [form] = Form.useForm();
@@ -50,7 +57,7 @@ const RegistrationForm = () => {
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
+      <Select style={{ width: 70 }} >
         <Option value="86">+86</Option>
         <Option value="87">+87</Option>
       </Select>
@@ -67,7 +74,8 @@ const RegistrationForm = () => {
       onFinish={onFinish}
       scrollToFirstError
       layout="vertical"
-    >
+      >
+        <h1>Register</h1>
       <Form.Item
         name="email"
         label="E-mail"
@@ -116,18 +124,18 @@ const RegistrationForm = () => {
         <Input addonBefore={prefixSelector} style={{ width: "100%" }} />
       </Form.Item>
 
-      <Form.Item name="agreement" valuePropName="checked">
+      <Form.Item name="agreement" valuePropName="checked" className="register-checkbox">
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          I have read the agreement
         </Checkbox>
       </Form.Item>
 
-      <Form.Item>
+      <Form.Item className="register-txt">
         <Button type="primary" htmlType="submit" onClick={() => handleSubmit()}>
           Register
         </Button>
-        Or
-        <Link to="/login">Login Now</Link>
+        <span> Or 
+        <Link to="/login">Login Now</Link></span>
       </Form.Item>
     </Form>
       </div>
