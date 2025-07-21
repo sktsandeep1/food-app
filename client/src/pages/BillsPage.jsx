@@ -28,7 +28,10 @@ const BillsPage = () => {
       setBillsData(data);
       dispatch({ type: "HIDE_LOADING" });
     } catch (error) {
-      message.error("Kuch to gadbad h bill page mein:", error);
+      message.error({
+        content: "Kuch to gadbad h bill page mein:", 
+        duration: 3
+      });
     }
   };
 

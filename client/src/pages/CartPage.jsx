@@ -123,7 +123,7 @@ const CartPage = () => {
       await axios.post("/api/bills/add-bills", billObject);
       message.success("Bills has been generated....");
       console.log(billObject);
-      navigate("/bills");
+      navigate("/");
       clear_cart()
 
       // cart should be reset
