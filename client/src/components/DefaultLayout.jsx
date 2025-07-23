@@ -1,5 +1,5 @@
 import "../styles/DefaultLayout.css";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate, Navigate, useLocation } from "react-router-dom";
 import { Children, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "./Spinner";
@@ -24,6 +24,9 @@ const DefaultLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
 
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -34,8 +37,6 @@ const DefaultLayout = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-
-
   const handleCart = () => {
     if (cartItems.length !== 0) {
       Navigate("/cart");
@@ -44,21 +45,16 @@ const DefaultLayout = ({ children }) => {
     }
   };
 
-
-
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  
+
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
       console.log("logged in");
-      dispatch({type: "LOGIN_SUCCESS"});
+      dispatch({ type: "LOGIN_SUCCESS" });
       console.log("dispatching login success");
     }
-  }, [])
-
-
-  
+  }, []);
 
   return (
     <Layout className="main-layout-body">
@@ -124,30 +120,37 @@ const DefaultLayout = ({ children }) => {
             background: colorBgContainer,
           }}
         >
-        <div>
-          {isLoggedIn && (
-            <Button
-              className="collapsed-icon"
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
-          )}
+          <div>
+            {isLoggedIn && (
+              <Button
+                className="collapsed-icon"
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+            )}
+            <div className="default-nav">
+              {!isHomePage && (
+                <div className="header-nav-home">
+                  <a href="/"><HomeOutlined /></a>
+                </div>
+              )}
 
-          <div className="header-login-btn"><a href="/login">login</a></div>
+              <div className="header-login-btn">
+                <a href="/login"><UserOutlined /></a>
+              </div>
+            </div>
           </div>
-
 
           <div className="header-cart" onClick={() => handleCart()}>
             <ShoppingCartOutlined />
             <span>{cartItems.length}</span>
           </div>
-        
         </Header>
 
         <Content

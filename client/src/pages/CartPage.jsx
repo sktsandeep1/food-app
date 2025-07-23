@@ -83,12 +83,12 @@ const CartPage = () => {
       render: (id, record) => (
         <div>
           <PlusCircleOutlined
-            className="mx-5"
+            className="mx-5 cart-page-increment"
             onClick={() => handleIncreament(record)}
           />
-          <b>{record.quantity}</b>
+          <b className="cart-page-quantity-value">{record.quantity}</b>
           <MinusCircleOutlined
-            className="mx-5"
+            className="mx-5 cart-page-decrement"
             onClick={() => handleDecrement(record)}
           />
         </div>
@@ -98,7 +98,7 @@ const CartPage = () => {
       title: "Action",
       dataIndex: "_id",
       render: (id, record) => (
-        <DeleteOutlined onClick={() => handleDelete(record)} />
+        <DeleteOutlined className="cart-page-delete-item" onClick={() => handleDelete(record)} />
       ),
     },
   ];

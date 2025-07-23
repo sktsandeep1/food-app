@@ -25,15 +25,35 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
   justify-content: space-between;
 }
 
-.header-cart,
-.header-login-btn {
+.header-cart {
   margin: 0 35px;
   text-align: end;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.header-login-btn a {
+.header-cart:hover {
+  color: #69b1ff;
+}
+
+.header-nav-home {
+  margin-left: 35px;
+}
+
+.header-login-btn {
+  margin-left: 20px;
+}
+
+.header-login-btn a,
+.header-nav-home a {
   font-size: 20px;
   text-transform: capitalize;
+}
+
+.default-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-txt .ant-row .ant-col {
@@ -67,6 +87,28 @@ li.ant-menu-item.ant-menu-item-selected span.ant-menu-title-content a {
 .demo-logo-vertical {
   text-align: center !important;
   font-size: 60px;
+}
+
+/* ---------- Cart Page ---------- */
+.cart-page-quantity-value {
+  margin: 0 10px;
+}
+
+.cart-page-increment:hover {
+  color: #69b1ff;
+}
+
+.cart-page-delete-item:hover,
+.cart-page-decrement:hover {
+  color: red;
+}
+
+.sub-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 20px;
 }
 
 /* ---------- Login ---------- */
