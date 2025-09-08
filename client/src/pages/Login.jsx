@@ -102,11 +102,15 @@ const NormalLoginForm = () => {
             Log in
           </Button>
           <span><a href="/">Home</a></span>
+          
           {/* <span>
             Or <Link to="/register">Register Now</Link>
           </span> */}
         </Form.Item>
+        <div className="dummylogin"><span>id: admin |  password: admin123</span></div>
+        
       </Form>
+      
     </div>
   );
 };
