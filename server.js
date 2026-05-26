@@ -1,73 +1,50 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
-const { bgBlue, bgCyan } = require("colors");
 require("colors");
 
 const connectDb = require("./config/config");
 
-// ----------------------------------------------------- //
-const path = require("path");
-
-const _dirname = path.resolve();
-
-// ----------------------------------------------------- //
-// dotenv
+// dotenv config
 dotenv.config();
 
-// db config
+// database connection
 connectDb();
 
-// rest object
+// express app
 const app = express();
 
-// middleware
-// app.use (cors())
-// app.use(cors({ origin: "*" }));
-// app.use(
-//   cors({
-//     origin: true,
-//     credentials: true,
-//   })
-// );
-
+// middlewares
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
-// routes
-// app.get("/", (req, res) => {
-//   res.send("<h1>hi there</h1>");
-// });
-
+// cors
 app.use(
   cors({
-    origin: ["https://food-app-chi-livid.vercel.app/"],
-    methods: ["POST", "GET"],
+    origin: "https://food-app-chi-livid.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
-// only this one is showing
 
+// test route
+app.get("/", (req, res) => {
+  res.send("API Running...");
+});
+
+// api routes
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bills", require("./routes/billRoutes"));
 
-// Port
+// port
 const PORT = process.env.PORT || 9090;
 
-// ---------------- ---------------- //
-app.use(express.static(path.join(_dirname, "/client/dist")));
-app.get("*", (_, res) => {
-  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-});
-
-// ---------------- ---------------- //
-//listen
+// listen
 app.listen(PORT, () => {
-  console.log(`server is running on ${PORT}`.bgCyan);
+  console.log(`Server running on port ${PORT}`.bgCyan.white);
 });
