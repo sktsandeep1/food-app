@@ -188,12 +188,16 @@ const ItemPage = () => {
                   <Select.Option value="groceries">Groceries</Select.Option>
                   <Select.Option value="fruits">Fruits</Select.Option>
                   <Select.Option value="vegetables">Vegetables</Select.Option>
-                  <Select.Option value="Snacks & Munchies">Snacks & Munchies</Select.Option>
+                  <Select.Option value="Snacks & Munchies">
+                    Snacks & Munchies
+                  </Select.Option>
                   <Select.Option value="dairy">Dairy</Select.Option>
                   <Select.Option value="beverages">Beverages</Select.Option>
-                  <Select.Option value="Health & Wellness">Health & Wellness</Select.Option>
+                  <Select.Option value="Health & Wellness">
+                    Health & Wellness
+                  </Select.Option>
                   <Select.Option value="Electronics & Home Appliances">
-                  Electronics & Home Appliances
+                    Electronics & Home Appliances
                   </Select.Option>
                 </Select>
               </Form.Item>

@@ -51,9 +51,8 @@ const CartPage = () => {
   const clear_cart = () => {
     dispatch({
       type: "CLEAR_CART",
-    
-  })
-}
+    });
+  };
 
   const columns = [
     { title: "Name", dataIndex: "name" },
@@ -98,7 +97,10 @@ const CartPage = () => {
       title: "Action",
       dataIndex: "_id",
       render: (id, record) => (
-        <DeleteOutlined className="cart-page-delete-item" onClick={() => handleDelete(record)} />
+        <DeleteOutlined
+          className="cart-page-delete-item"
+          onClick={() => handleDelete(record)}
+        />
       ),
     },
   ];
@@ -124,7 +126,7 @@ const CartPage = () => {
       message.success("Bills has been generated....");
       console.log(billObject);
       navigate("/");
-      clear_cart()
+      clear_cart();
 
       // cart should be reset
     } catch (error) {
@@ -150,11 +152,11 @@ const CartPage = () => {
         <Button
           type="primary"
           onClick={() => {
-
             if (cartItems.length == 0) {
-              message.error("Cart is empty")
+              message.error("Cart is empty");
               return;
-            } setBillPopUp(true);
+            }
+            setBillPopUp(true);
           }}
           disabled={cartItems.length === 0}
         >
@@ -171,15 +173,24 @@ const CartPage = () => {
         footer={false}
       >
         <Form layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="customerName" label="Customer Name" rules={[{ required: true, message: "This field is required" }]}
+          <Form.Item
+            name="customerName"
+            label="Customer Name"
+            rules={[{ required: true, message: "This field is required" }]}
           >
             <Input />
           </Form.Item>
-          <Form.Item name="contactNumber" label="Contact Number" rules={[{ required: true, message: "This field is required" }]}
+          <Form.Item
+            name="contactNumber"
+            label="Contact Number"
+            rules={[{ required: true, message: "This field is required" }]}
           >
             <Input />
           </Form.Item>
-          <Form.Item name="paymentMethod" label="Payment Method" rules={[{ required: true, message: "This field is required" }]}
+          <Form.Item
+            name="paymentMethod"
+            label="Payment Method"
+            rules={[{ required: true, message: "This field is required" }]}
           >
             <Select>
               <Select.Option value="cash">Cash</Select.Option>
@@ -200,7 +211,7 @@ const CartPage = () => {
             </b>
           </h3>
           <div className="" style={{ display: "flex", justifyContent: "end" }}>
-            <Button type="primary" htmlType="submit" >
+            <Button type="primary" htmlType="submit">
               Save
             </Button>
           </div>

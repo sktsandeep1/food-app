@@ -5,9 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { EyeOutlined } from "@ant-design/icons";
-import ReactToPrint from "react-to-print"
-import { useReactToPrint } from 'react-to-print'
-
+import ReactToPrint from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 
 const BillsPage = () => {
   const componentRef = useRef();
@@ -15,8 +14,6 @@ const BillsPage = () => {
   const dispatch = useDispatch();
   const [popUpBillModal, setPopUpBillModal] = useState(false);
   const [selectedBill, setSelectedBill] = useState(null);
-  
-
 
   const getAllBills = async () => {
     try {
@@ -29,8 +26,8 @@ const BillsPage = () => {
       dispatch({ type: "HIDE_LOADING" });
     } catch (error) {
       message.error({
-        content: "Kuch to gadbad h bill page mein:", 
-        duration: 3
+        content: "Kuch to gadbad h bill page mein:",
+        duration: 3,
       });
     }
   };
@@ -38,14 +35,12 @@ const BillsPage = () => {
   useEffect(() => {
     getAllBills();
   }, []);
-  
-   const handlePrint = useReactToPrint({
-  content: () => componentRef.current,
-   });
-  
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   // Print is not working
-  
-  
 
   const columns = [
     { title: "ID", dataIndex: "_id" },
@@ -106,7 +101,6 @@ const BillsPage = () => {
             }}
             footer={false}
           >
-
             {/* Invoice Bill Section */}
             <div className="bill-section" ref={componentRef}>
               <div className="bill-row">
@@ -172,26 +166,24 @@ const BillsPage = () => {
                     <tbody>
                       {selectedBill.cartItems.map((item) => {
                         return (
-                          
-                            <tr key={item.id}>
-                              <td>
-                                <span>{item.name}</span>
-                              </td>
+                          <tr key={item.id}>
+                            <td>
+                              <span>{item.name}</span>
+                            </td>
 
-                              <td>
-                                <span>{item.quantity}</span>
-                              </td>
+                            <td>
+                              <span>{item.quantity}</span>
+                            </td>
 
-                              <td>
-                                <span data-prefix>$</span>
-                                <span>{item.price}</span>
-                              </td>
-                              <td>
-                                <span data-prefix>$</span>
-                                <span>{item.quantity * item.price}</span>
-                              </td>
-                            </tr>
-                          
+                            <td>
+                              <span data-prefix>$</span>
+                              <span>{item.price}</span>
+                            </td>
+                            <td>
+                              <span data-prefix>$</span>
+                              <span>{item.quantity * item.price}</span>
+                            </td>
+                          </tr>
                         );
                       })}
                     </tbody>
@@ -211,7 +203,7 @@ const BillsPage = () => {
                               .reduce(
                                 (total, item) =>
                                   total + item.price * item.quantity,
-                                0
+                                0,
                               )
                               .toFixed(2)}
                           </span>
@@ -223,10 +215,10 @@ const BillsPage = () => {
               </div>
             </div>
 
-             <div className="print">
-              <Button type="primary"
-              onClick={handlePrint}
-              >Print</Button>
+            <div className="print">
+              <Button type="primary" onClick={handlePrint}>
+                Print
+              </Button>
             </div>
           </Modal>
         )}

@@ -10,7 +10,7 @@ const CustomerPage = () => {
   const dispatch = useDispatch();
   // const [selectedBill, setSelectedBill] = useState(null);
 
- const getAllBills = async () => {
+  const getAllBills = async () => {
     try {
       dispatch({
         type: "SHOW_LOADING",
@@ -24,10 +24,9 @@ const CustomerPage = () => {
     }
   };
 
-    useEffect(() => {
-      getAllBills();
-
-    }, []);
+  useEffect(() => {
+    getAllBills();
+  }, []);
   const columns = [
     { title: "ID", dataIndex: "_id" },
     {
