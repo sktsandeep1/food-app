@@ -12,7 +12,7 @@ const connectDb = require("./config/config");
 // ----------------------------------------------------- //
 const path = require("path");
 
-// const _dirname = path.resolve();
+const _dirname = path.resolve();
 
 // ----------------------------------------------------- //
 // dotenv
@@ -46,8 +46,7 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    // origin: ["http://localhost:5173/", "https://food-app-chi-livid.vercel.app/"],
-    origin: ["https://food-app-chi-livid.vercel.app"],
+    origin: ["https://food-app-chi-livid.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true,
   }),
@@ -63,14 +62,10 @@ const PORT = process.env.PORT || 9090;
 
 // ---------------- ---------------- //
 app.use(express.static(path.join(_dirname, "/client/dist")));
-
-// app.get("*", (_, res) => {
-//   res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-// });
-
 app.get("*", (_, res) => {
-  res.sendFile(path.join(__dirname, "client/dist/index.html"));
+  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
 });
+
 // ---------------- ---------------- //
 //listen
 app.listen(PORT, () => {
