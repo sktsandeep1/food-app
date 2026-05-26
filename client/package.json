@@ -1,5 +1,4 @@
 {
-  "proxy": "http://localhost:9090",
   "name": "client",
   "private": true,
   "version": "0.0.0",
@@ -15,7 +14,6 @@
     "@ant-design/compatible": "^5.1.4",
     "antd": "^5.24.1",
     "axios": "^1.7.9",
-    "food-app": "file:..",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
