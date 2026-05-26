@@ -72,3 +72,10 @@ h1.h1-item-page {
 .item-page-row-1 button {
   padding: 20px;
 }
+
+@media (max-width: 768px) {
+  .sidebar-logo-vertical img,
+  .sidebar-logo-vertical {
+    width: 75px !important;
+  }
+}

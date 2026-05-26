@@ -28,8 +28,12 @@ const Homepage = () => {
         dispatch({
           type:'SHOW_LOADING'
         })
-        const { data } = await axios.get("/api/items/get-item");
-        // console.log("Maal yahan h:", data);
+        // const { data } = await axios.get("/api/items/get-item");
+      const { data } = await axios.get("/api/items/get-item", {
+  headers: { 'Cache-Control': 'no-cache' }
+});
+
+        console.log("Maal yahan h:", data);
         setItemsData(data);
         dispatch({type:'HIDE_LOADING'})
       } catch (error) {

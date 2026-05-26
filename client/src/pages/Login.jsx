@@ -32,7 +32,7 @@ const NormalLoginForm = () => {
     if (userId === userNameValue && password === passwordValue) {
       // await axios.post("/api/users/login", values);
       dispatch({ type: "LOGIN_SUCCESS" });
-      localStorage.setItem("isLoggedIn", true)
+      localStorage.setItem("isLoggedIn", true);
       message.success("User logged in successfully");
       navigate("/");
     } else {
@@ -101,16 +101,18 @@ const NormalLoginForm = () => {
           >
             Log in
           </Button>
-          <span><a href="/">Home</a></span>
-          
+          <span>
+            <a href="/">Home</a>
+          </span>
+
           {/* <span>
             Or <Link to="/register">Register Now</Link>
           </span> */}
         </Form.Item>
-        <div className="dummylogin"><span>id: admin |  password: admin123</span></div>
-        
+        <div className="dummylogin">
+          <span>id: admin | password: admin123</span>
+        </div>
       </Form>
-      
     </div>
   );
 };

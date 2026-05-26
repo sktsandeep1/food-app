@@ -46,7 +46,7 @@ app.use(morgan("dev"));
 
 app.use(
   cors({
-    origin: ["https://food-app-chi-livid.vercel.app/"],
+    origin: ["http://localhost:5173/", "https://food-app-chi-livid.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true,
   })
@@ -61,10 +61,10 @@ app.use("/api/bills", require("./routes/billRoutes"));
 const PORT = process.env.PORT || 9090;
 
 // ---------------- ---------------- //
-app.use(express.static(path.join(_dirname, "/client/dist")));
-app.get("*", (_, res) => {
-  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-});
+// app.use(express.static(path.join(_dirname, "/client/dist")));
+// app.get("*", (_, res) => {
+//   res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
+// });
 
 // ---------------- ---------------- //
 //listen

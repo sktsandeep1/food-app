@@ -57,7 +57,7 @@ const DefaultLayout = ({ children }) => {
   }, []);
 
   return (
-    <Layout className="main-layout-body">
+    <Layout className="main-layout-body" style={{ position: "relative" }}>
       {loading && <Spinner />}
 
       {isLoggedIn && (
@@ -67,8 +67,12 @@ const DefaultLayout = ({ children }) => {
           collapsible
           collapsed={collapsed}
         >
-          <div className="demo-logo-vertical">
-            <ShopOutlined className="logo" />
+          <div
+            className="sidebar-logo-vertical"
+            style={{ width: "100px", display: "flex", margin: "auto" }}
+          >
+            {/* <ShopOutlined className="logo" /> */}
+            <img src="/pos-logo.png" alt="" style={{ width: "100px" }} />
           </div>
 
           <Menu
@@ -93,15 +97,15 @@ const DefaultLayout = ({ children }) => {
                 label: <Link to="/items">Items</Link>,
               },
               {
-                key: "/customers",
+                key: "/customer-page",
                 icon: <UserOutlined />,
                 label: <Link to="/customer-page">Customers</Link>,
               },
-              {
-                key: "/add-user",
-                icon: <UserOutlined />,
-                label: <Link to="/add-user">Add User</Link>,
-              },
+              // {
+              //   key: "/add-user",
+              //   icon: <UserOutlined />,
+              //   label: <Link to="/add-user">Add User</Link>,
+              // },
               {
                 key: "/logout",
                 icon: <LogoutOutlined />,
@@ -137,12 +141,16 @@ const DefaultLayout = ({ children }) => {
             <div className="default-nav">
               {!isHomePage && (
                 <div className="header-nav-home">
-                  <a href="/"><HomeOutlined /></a>
+                  <a href="/">
+                    <HomeOutlined />
+                  </a>
                 </div>
               )}
 
               <div className="header-login-btn">
-                <a href="/login"><UserOutlined /></a>
+                <a href="/login">
+                  <UserOutlined />
+                </a>
               </div>
             </div>
           </div>
