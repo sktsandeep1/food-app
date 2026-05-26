@@ -3,17 +3,19 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const path = require("path");
+
 require("colors");
 
 const connectDb = require("./config/config");
 
-// dotenv config
+// dotenv
 dotenv.config();
 
-// database connection
+// db connection
 connectDb();
 
-// express app
+// app
 const app = express();
 
 // middlewares
@@ -22,24 +24,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
-// cors
 app.use(
   cors({
-    origin: "https://food-app-chi-livid.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
 
-// test route
-app.get("/", (req, res) => {
-  res.send("API Running...");
-});
-
 // api routes
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bills", require("./routes/billRoutes"));
+
+// frontend static files
+app.use(express.static(path.join(__dirname, "client/dist")));
+
+// frontend routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist/index.html"));
+});
 
 // port
 const PORT = process.env.PORT || 9090;
